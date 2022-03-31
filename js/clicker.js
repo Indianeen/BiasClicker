@@ -71,9 +71,13 @@ function step(timestamp) {
     // achievements. Titta dock på upgrades arrayen och gör något rimligare om du
     // vill ha achievements.
     // på samma sätt kan du även dölja uppgraderingar som inte kan köpas
+    if (moneyPerClick == 5 && !achievementTest) {
+        achievementTest = true;
+        message('Ace!', 'achievement');
+    }
     if (moneyPerClick == 10 && !achievementTest) {
         achievementTest = true;
-        message('Du har hittat en FOSSIL!', 'achievement');
+        message('Double ace!', 'achievement');
     }
 
     window.requestAnimationFrame(step);
@@ -107,18 +111,23 @@ window.addEventListener('load', (event) => {
  */
 upgrades = [
     {
-        name: 'Hullbreak',
+        name: 'Infantry kill',
         cost: 10,
         amount: 1,
     },
     {
-        name: 'Crew KO',
+        name: 'Hullbreak',
         cost: 100,
-        amount: 10,
+        amount: 15,
+    },
+    {
+        name: 'Crew KO',
+        cost: 1000,
+        amount: 50,
     },
     {
         name: 'Ammorack',
-        cost: 1000,
+        cost: 5000,
         amount: 100,
     },
 ];
@@ -149,18 +158,18 @@ function createCard(upgrade) {
     const cost = document.createElement('p');
 
     header.textContent = `${upgrade.name}, +${upgrade.amount} per sekund.`;
-    cost.textContent = `Köp för ${upgrade.cost} benbitar.`;
+    cost.textContent = `Buy for ${upgrade.cost} Bias.`;
 
     card.addEventListener('click', (e) => {
         if (money >= upgrade.cost) {
             moneyPerClick++;
             money -= upgrade.cost;
-            upgrade.cost *= 1.5;
-            cost.textContent = 'Köp för ' + upgrade.cost + ' benbitar';
+            upgrade.cost *= 2;
+            cost.textContent = 'Buy for ' + upgrade.cost + ' Bias';
             moneyPerSecond += upgrade.amount;
-            message('Grattis du har lockat till dig fler besökare!', 'success');
+            message('Nice kill!', 'success');
         } else {
-            message('Du har inte råd.', 'warning');
+            message('Not enough bias.', 'warning');
         }
     });
 

@@ -27,7 +27,10 @@ let moneyPerSecond = 0;
 let last = 0;
 
 let achievementTest = false;
-
+let achievementSecond = false;
+let achievementthird = false;
+let achievementfourth = false;
+let achievementfifth = false;
 /* Med ett valt element, som knappen i detta fall så kan vi skapa listeners
  * med addEventListener så kan vi lyssna på ett specifikt event på ett html-element
  * som ett klick.
@@ -75,9 +78,21 @@ function step(timestamp) {
         achievementTest = true;
         message('Ace!', 'achievement');
     }
-    if (moneyPerClick == 10 && !achievementTest) {
-        achievementTest = true;
+    if (moneyPerClick == 10 && !achievementSecond) {
+        achievementSecond = true;
         message('Double ace!', 'achievement');
+    }
+    if (moneyPerClick == 15 && !achievementthird) {
+        achievementthird = true;
+        message('Triple ace!', 'achievement');
+    }
+    if (moneyPerClick == 40 && !achievementfourth) {
+        achievementfourth = true;
+        message('True Heavy!', 'achievement');
+    }
+    if (moneyPerClick == 100 && !achievementfifth) {
+        achievementfifth = true;
+        message('Invincible Beast!', 'achievement');
     }
 
     window.requestAnimationFrame(step);

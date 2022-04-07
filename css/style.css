@@ -90,7 +90,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: #f8f8f8;
-    color: #121212;
+    color: #b1adad;
     font-family: 'Saira Stencil One', cursive;
 }
 /* För att göra footern sticky så har vi flex på bodyn och då räcker det med 

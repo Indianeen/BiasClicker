@@ -227,3 +227,9 @@ footer {
 .title {
     font-weight: 600;
 }
+
+body {
+    background-image: url(../img/Camo2.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
